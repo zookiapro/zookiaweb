@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --primary: #9d2fda;
+  --secondary: #d42881;
+  --bg: #ffffff;
+  --fg: #0a0a0f;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f5f5f5; }
+::-webkit-scrollbar-thumb { background: #9d2fda; border-radius: 3px; }
+
+/* Selection */
+::selection { background: rgba(157,47,218,0.15); color: #9d2fda; }
+
+/* Brand gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #9d2fda 0%, #d42881 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated underline */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #9d2fda, #d42881);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Fade up animation utility */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+
+/* Grid line pattern */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(157,47,218,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(157,47,218,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Card hover */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(157,47,218,0.14);
+}
+
+/* Brand button */
+.btn-primary {
+  background: linear-gradient(135deg, #9d2fda 0%, #d42881 100%);
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px rgba(157,47,218,0.28);
+}
+
+.btn-outline {
+  border: 1.5px solid rgba(157,47,218,0.35);
+  color: #9d2fda;
+  font-family: var(--font-display);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.btn-outline:hover {
+  border-color: #9d2fda;
+  background: rgba(157,47,218,0.06);
+}
+
+/* Noise overlay */
+.noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Horizontal rule brand */
+.hr-brand {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(157,47,218,0.3), transparent);
+  border: none;
+}
+
+/* Step number */
+.step-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #9d2fda;
+}
+
+/* Stat block */
+.stat-block {
+  border-left: 2px solid;
+  border-image: linear-gradient(180deg, #9d2fda, #d42881) 1;
+  padding-left: 1.25rem;
+}
